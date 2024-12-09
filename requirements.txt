@@ -1,0 +1,10 @@
+aiofiles
+docling
+fastapi
+mistralai
+pydantic
+pypdf2
+python-multipart
+starlette
+uvicorn
+websockets
