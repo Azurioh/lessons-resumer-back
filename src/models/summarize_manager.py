@@ -13,7 +13,7 @@ from src.models.llm_summarize import LlmSummarize
 from src.models.pdf_extractor import PdfExtractor
 from utils.estimation_time import add_estimation_time, get_estimation_time
 
-class ExtractorManager:
+class SummarizeManager:
     def __init__(self, upload_folder_path: str, estimation_file_path: str):
         self.request_queue = Queue()
         self.requests: list[Request] = []
