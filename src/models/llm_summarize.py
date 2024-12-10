@@ -68,7 +68,10 @@ class LlmSummarize:
                 results[index] = "Error while summarizing page: No response from Mistral"
                 return
 
-            res = response.choices[0].message.content
+            res = str(response.choices[0].message.content)
+
+            if (res.startswith('Résumé: ')):
+                res = res[8:]
 
             results[index] = res
         except Exception as e:
