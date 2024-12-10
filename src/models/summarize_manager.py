@@ -84,8 +84,9 @@ class SummarizeManager:
             try:
                 request_id = self.request_queue.get(timeout=1)
                 try:
-                    with self.processing_lock:
-                        self._summarize_worker(request_id)
+                    if request_id:
+                        with self.processing_lock:
+                            self._summarize_worker(request_id)
                 except Exception as e:
                     print(f"Error while processing request: {str(e)}")
                     self.__update_request_status(request_id, RequestStatus.FAILED.value, str(e))
@@ -186,7 +187,7 @@ class SummarizeManager:
         estimation_time = get_estimation_time(self.estimation_file_path, request.nb_pages)
         if (request.status == RequestStatus.PENDING.value):
             return estimation_time
-        return abs(estimation_time - (time() - request.time_start))
+        return max(estimation_time - (time() - request.time_start), -1)
 
     def __get_queue_estimation_time(self) -> float:
         """
@@ -197,8 +198,12 @@ class SummarizeManager:
         """
         queue_time_estimation = 0
         queue_requests = [r for r in self.requests if r.status == RequestStatus.PENDING.value]
+        current_requests = [r for r in self.requests if r.status > RequestStatus.PENDING.value and r.status < RequestStatus.COMPLETED.value]
 
         for request in queue_requests:
+            queue_time_estimation += self.__get_request_remaining_time(request)
+
+        for request in current_requests:
             queue_time_estimation += self.__get_request_remaining_time(request)
 
         return queue_time_estimation
@@ -225,7 +230,7 @@ class SummarizeManager:
         queue_time_estimation = self.__get_queue_estimation_time()
 
         if request.status == RequestStatus.PENDING.value:
-            queue_requests = [r for r in self.requests if r.status == RequestStatus.PENDING.value and r.id != request_id]
+            queue_requests = [r for r in self.requests if r.status == RequestStatus.PENDING.value]
             queue_position = queue_requests.index(request) + 1
             return {
                 "id": request.id,
