@@ -163,3 +163,4 @@ cython_debug/
 
 *.json
 tmp
+.DS_Store
