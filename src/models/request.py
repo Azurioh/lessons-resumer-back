@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from src.enums.request_status import RequestStatus
+from src.enums import RequestStatus
 
 @dataclass
 class Request:
