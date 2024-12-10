@@ -31,7 +31,7 @@ class PdfExtractor:
             for i, page in enumerate(reader.pages):
                 writer = PdfWriter()
                 writer.add_page(page)
-                output_file = os.path.join(output_folder_path, f"page_{i + 1}.pdf")
+                output_file = os.path.join(output_folder_path, f"page_{i < 9 and '0'}{i + 1}.pdf")
                 with open(output_file, "wb") as file:
                     writer.write(file)
             return len(reader.pages)
