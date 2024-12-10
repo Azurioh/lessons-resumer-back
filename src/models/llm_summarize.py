@@ -94,7 +94,7 @@ class LlmSummarize:
 
         # Get all markdown files in the directory
         files = os.listdir(f"{upload_dir}/{request_id}")
-        markdown_files = [file for file in files if file.endswith(".md")]
+        markdown_files = sorted([file for file in files if file.endswith(".md")])
 
         tmp_results = [None] * len(markdown_files)
         results = []
