@@ -7,7 +7,7 @@ from queue import Queue
 from PyPDF2 import PdfReader
 from threading import Thread, Lock
 
-from enums.request_status import RequestStatus
+from src.enums import RequestStatus
 from src.models.request import Request
 from src.models.llm_summarize import LlmSummarize
 from src.models.pdf_extractor import PdfExtractor
