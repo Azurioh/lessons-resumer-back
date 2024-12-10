@@ -1,2 +1,3 @@
-# lessons-resumer-back
-Server used to resume your lessons using AI
+# lessons-resumer-AI
+
+Optimized AI processing to resume your lessons
