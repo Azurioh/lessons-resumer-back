@@ -8,11 +8,10 @@ from PyPDF2 import PdfReader
 from threading import Thread, Lock
 
 from enums.request_status import RequestStatus
-from src.entities.request_type import Request
+from src.models.request import Request
 from src.models.llm_summarize import LlmSummarize
 from src.models.pdf_extractor import PdfExtractor
 from utils.estimation_time import add_estimation_time, get_estimation_time
-
 
 class ExtractorManager:
     def __init__(self, upload_folder_path: str, estimation_file_path: str):
