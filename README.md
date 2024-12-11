@@ -2,7 +2,7 @@
 
 <h4 align="center" style="font-weight: normal; font-style: italic">Résumer ses cours n'a jamais été aussi facile...</h4>
 
-<h4 align="center"><a href="https://github.com/Azurioh/lessons-resumer-ai/en.md">🇺🇸 English version</a></h4>
+<h4 align="center"><a href="https://github.com/Azurioh/lessons-resumer-ai/blob/main/en.md">🇺🇸 English version</a></h4>
 
 ---
 
