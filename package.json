@@ -5,22 +5,32 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node app/index.ts",
+    "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^6.0.1",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "json-schema-to-ts": "^3.1.1",
+    "jsonwebtoken": "^9.0.2",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.2"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.5",
     "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.0"
+    "@types/express": "^5.0.0",
+    "nodemon": "^3.1.7",
+    "prisma": "^6.0.1"
   }
 }
