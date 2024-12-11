@@ -4,6 +4,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
 import authRouter from './routers/auth-router';
+import userRouter from './routers/user-router';
+import authMiddleware from './middlewares/auth-middleware';
 
 dotenv.config();
 
@@ -20,6 +22,7 @@ app.get('/', (_: Request, res: Response) => {
 });
 
 app.use('/auth', authRouter);
+app.use('/users', authMiddleware, userRouter);
 
 app.get('*', (_: Request, res: Response) => {
   res.status(404).send('Not Found');
