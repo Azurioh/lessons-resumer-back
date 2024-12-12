@@ -28,6 +28,12 @@ const authMiddleware = async (req: any, res: Response, next: NextFunction) => {
     }
 
     const user = await userRepostory.getUserById(decoded.id);
+
+    if (user.deletedAt) {
+      res.status(401).json({ err: 'Account is deleted.' });
+      return;
+    }
+
     req.user = user;
 
     next();
